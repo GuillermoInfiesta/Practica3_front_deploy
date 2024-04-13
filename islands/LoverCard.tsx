@@ -22,7 +22,11 @@ export const LoverCard: FunctionComponent<
       }}
     >
       <img src={props.lover.photo} alt={`${props.lover.name}´s image`} />
-      <div class="details">{props.lover.name + " " + props.lover.age}</div>
+      <div class="details">
+        <span>{props.lover.name}</span>
+        <span class="age">{" " + props.lover.age}</span>
+      </div>
     </div>
   );
+  //{props.lover.name + " " + props.lover.age}
 };

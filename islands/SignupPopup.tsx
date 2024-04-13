@@ -2,6 +2,7 @@ import { FunctionComponent } from "preact";
 import { useState } from "preact/hooks";
 import { CloseAllPopups, CloseSignUp } from "../methods/PopupInteractions.ts";
 import jscookie from "npm:js-cookie@3.0.5";
+import { HobbiesBox } from "./HobbiesBox.tsx";
 
 export const SignUpPopup: FunctionComponent = () => {
   const [name, setName] = useState<string>("");
@@ -11,6 +12,7 @@ export const SignUpPopup: FunctionComponent = () => {
   const [age, setAge] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [hobbies, setHobbies] = useState<string[]>([]);
+  const [hobbieAux, setHobbieAux] = useState<string>("");
   const [photo, setPhoto] = useState<string>("");
   const [error, setError] = useState<string>("");
 
@@ -139,7 +141,34 @@ export const SignUpPopup: FunctionComponent = () => {
           >
           </input>
         </label>
-
+        <label class="login-form-label">
+          <span>Hobbie</span>
+          <input
+            value={hobbieAux}
+            type="text"
+            onInput={(e) => {
+              setHobbieAux(e.currentTarget.value);
+              setError("");
+            }}
+          >
+          </input>
+        </label>
+        <button
+          class="width-30"
+          onClick={() => {
+            console.log(hobbieAux);
+            if (
+              hobbieAux.length === 0 || hobbieAux.indexOf(" ") === 0
+            ) return;
+            setHobbieAux(hobbieAux.toLowerCase());
+            if (hobbies.indexOf(hobbieAux) !== -1) return;
+            hobbies.push(hobbieAux);
+            setHobbieAux("");
+          }}
+        >
+          Add hobbie
+        </button>
+        <HobbiesBox hobbies={hobbies} dynamic={true} />
         <button onClick={signup}>Continue</button>
         {error !== "" && <span class="error">{error}</span>}
       </div>

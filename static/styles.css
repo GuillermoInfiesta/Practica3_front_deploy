@@ -273,15 +273,22 @@ html {
   border: 2px solid black;
   box-shadow: 0 0 10px black;
   border-radius: 10px;
-  background-color:white;
+  background: linear-gradient(to bottom left, orange, purple);
   img{
-    height: 80%;
+    height: 90%;
     width: 100%;
     object-fit: cover;
     border-radius: 10px;
   }
   .details{
+    position: absolute;
+    font-weight: lighter;
     font-size: larger;
+    color: white;
+    .age{
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.565);
+    }
   }
 }
 
@@ -565,6 +572,7 @@ html {
   transform: translateX(-50%) translateY(-50%)
   */
 .hobbies-box{
+  min-height: 3rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -582,3 +590,8 @@ html {
   font-size: small;
 }
 /*Problema con font-size?*/
+
+.hobbies-mins{
+  border-radius: 10px;
+  border: 1px solid rgba(128, 128, 128, 0.442);
+}

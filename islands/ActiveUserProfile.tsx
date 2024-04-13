@@ -18,6 +18,7 @@ export const ActiveUserProfile: FunctionComponent<
   const [auxhobbie, setAuxhobbie] = useState<string>("");
   const [hobbies, setHobbies] = useState<string[]>([]);
   const [comments, setComments] = useState<UserComment[]>([]);
+  const [commentsUserDelete, setComementsUserDelete] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   useEffect(() => {
@@ -192,8 +193,18 @@ export const ActiveUserProfile: FunctionComponent<
         <h5>Comments</h5>
         <CommentsBox comments={comments} />
         <span>Delete comments from user:</span>
-        <input />
-        <button class="decorated-button">Delete comments</button>
+        <input onInput={(e) => setComementsUserDelete(e.currentTarget.value)} />
+        <button
+          class="decorated-button"
+          onClick={() => {
+            const filteredComments = comments.filter((cm) =>
+              cm.user !== commentsUserDelete
+            );
+            setComments(filteredComments);
+          }}
+        >
+          Delete comments
+        </button>
       </div>
       <button class="decorated-button" onClick={updateData}>
         Apply Changes
