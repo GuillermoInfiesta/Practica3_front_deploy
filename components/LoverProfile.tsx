@@ -20,13 +20,19 @@ export const LoverProfile: FunctionComponent<
   return (
     <div id="popup#lover" class="popup popup-lover">
       <div class="lover-data">
-        <img src={props.lover.value.photo} />
-        <h2>{props.lover.value.name}</h2>
-        <div>
-          <span>{props.lover.value.age + " "}</span>
-          <span>{props.lover.value.sex}</span>
+        <div class="flex flex-col">
+          <img src={props.lover.value.photo} />
+          <div>
+            <h2>{props.lover.value.name}</h2>
+            <div>
+              <span>{props.lover.value.age + " "}</span>
+              <span>{props.lover.value.sex}</span>
+            </div>
+          </div>
         </div>
-        <button onClick={() => CloseAllPopups()}>Close Profile</button>
+        <button class="decorated-button" onClick={() => CloseAllPopups()}>
+          Close Profile
+        </button>
       </div>
       <div class="lover-details">
         <h4>About me</h4>

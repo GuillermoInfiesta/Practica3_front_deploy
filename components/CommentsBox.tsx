@@ -5,6 +5,9 @@ import { UserComment } from "../Types.ts";
 export const CommentsBox: FunctionComponent<{ comments: UserComment[] }> = (
   props,
 ) => {
+  if (!Array.isArray(props.comments)) {
+    props.comments = [];
+  }
   return (
     <div class="comments">
       {props.comments.map((comm) => (

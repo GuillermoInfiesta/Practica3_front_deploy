@@ -9,7 +9,7 @@ export const SignUpPopup: FunctionComponent = () => {
   const [password, setPassword] = useState<string>("");
   const [password2, setPassword2] = useState<string>("");
   const [sex, setSex] = useState<string>("male");
-  const [age, setAge] = useState<string>("");
+  const [age, setAge] = useState<number>(18);
   const [description, setDescription] = useState<string>("");
   const [hobbies, setHobbies] = useState<string[]>([]);
   const [hobbieAux, setHobbieAux] = useState<string>("");
@@ -135,9 +135,10 @@ export const SignUpPopup: FunctionComponent = () => {
         <label class="login-form-label">
           <span>Age</span>
           <input
+            value={age}
             type="number"
             onInput={(e) => {
-              setAge(e.currentTarget.value);
+              setAge(parseInt(e.currentTarget.value));
               setError("");
             }}
           >
@@ -157,34 +158,36 @@ export const SignUpPopup: FunctionComponent = () => {
             <option>female</option>
           </select>
         </label>
-        <label class="login-form-label">
-          <span>Hobbie</span>
-          <input
-            value={hobbieAux}
-            type="text"
-            onInput={(e) => {
-              setHobbieAux(e.currentTarget.value);
-              setError("");
+        <div class="signup-hobbies">
+          <label class="login-form-label">
+            <span>Hobbie</span>
+            <input
+              value={hobbieAux}
+              type="text"
+              onInput={(e) => {
+                setHobbieAux(e.currentTarget.value);
+                setError("");
+              }}
+            >
+            </input>
+          </label>
+          <button
+            class="width-30"
+            onClick={() => {
+              console.log(hobbieAux);
+              if (
+                hobbieAux.length === 0 || hobbieAux.indexOf(" ") === 0
+              ) return;
+              setHobbieAux(hobbieAux.toLowerCase());
+              if (hobbies.indexOf(hobbieAux) !== -1) return;
+              hobbies.push(hobbieAux);
+              setHobbieAux("");
             }}
           >
-          </input>
-        </label>
-        <button
-          class="width-30"
-          onClick={() => {
-            console.log(hobbieAux);
-            if (
-              hobbieAux.length === 0 || hobbieAux.indexOf(" ") === 0
-            ) return;
-            setHobbieAux(hobbieAux.toLowerCase());
-            if (hobbies.indexOf(hobbieAux) !== -1) return;
-            hobbies.push(hobbieAux);
-            setHobbieAux("");
-          }}
-        >
-          Add hobbie
-        </button>
-        <HobbiesBox hobbies={hobbies} dynamic={true} />
+            Add hobbie
+          </button>
+          <HobbiesBox hobbies={hobbies} dynamic={true} />
+        </div>
       </div>
       <button
         class="decorated-button"

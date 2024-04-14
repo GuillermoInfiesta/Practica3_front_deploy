@@ -162,8 +162,9 @@ html {
 
 .logo{
   align-self: center;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
 }
 
 .page-logo{
@@ -329,7 +330,8 @@ html {
     height: 90%;
     width: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
   .details{
     position: absolute;
@@ -369,6 +371,7 @@ html {
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     text-align: center;
     img{
       border-radius: 50%;
@@ -381,14 +384,10 @@ html {
       padding: 4px;
       background: linear-gradient(to bottom right, orange, purple);
     }
-    .resume{
-    }
+
     button{
       width: 30%;
       float: left;
-      border-color: red;
-      background-color: rgba(255, 0, 0, 0.272);
-      color: red;
       bottom: 10px;
     }
   } 
@@ -506,9 +505,14 @@ html {
   }
   .profile-comments{
     .comments{
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      overflow-y: scroll;
+      max-height: 200px;
       font-weight: lighter;
       font-size: small;
-      margin-bottom: 0.5rem;
+      margin: 0px 4px 0.5rem 4px;
     }
     span{
       margin-right: 0.5rem;
@@ -607,6 +611,24 @@ html {
 
 }
 
+.signup-hobbies{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  button{
+    height: 20px;
+    font-size: small;
+    width: 35%;
+  }
+  .hobbies-box{
+    p{
+      visibility: hidden;
+      padding: 0.5rem;
+      font-size: small;
+    }
+  }
+}
+
 .user-comment{
   width: 100%;
   display: flex;
@@ -643,6 +665,10 @@ html {
   flex-wrap: wrap;
   gap: 1rem;
   overflow-y: scroll;
+  p{
+    font-weight: lighter;
+    font-size: small;
+  }
 }
 .hobbies-box::-webkit-scrollbar{
   width: 0px;
@@ -660,6 +686,16 @@ html {
 .hobbies-mins{
   border-radius: 10px;
   border: 1px solid rgba(128, 128, 128, 0.442);
+}
+
+.comment-writter{
+  
+  display: flex;
+  flex-direction: column;
+  .error{
+    margin-top: 8px;
+    padding: 0.5rem;
+  }
 }
 
 @media (max-width: 600px) {
@@ -722,7 +758,13 @@ html {
       width: 100%;
       justify-content:start;
       .about-lover{
+        padding-top: 12px;
         height: auto;
+        flex-direction: column;
+        gap:1rem;
+        .half{
+          width: 100%;
+        }
       }
     }
   }
@@ -755,3 +797,4 @@ html {
     }
   } 
 }
+

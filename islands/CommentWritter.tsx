@@ -6,13 +6,12 @@ export const CommentWritter: FunctionComponent<
   { user: string; lover: string; password: string }
 > = (props) => {
   const [comment, setComment] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const sendComment = async () => {
-    console.log({
-      name: props.lover,
-      user: props.user,
-      password: props.password,
-      message: comment,
-    });
+    if (comment.length === 0 || !comment.trim()) {
+      setError("Cannot publish an empty comment");
+      return;
+    }
     const response = await fetch("/api/PublishComment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -20,21 +19,29 @@ export const CommentWritter: FunctionComponent<
         name: props.lover,
         user: props.user,
         password: props.password,
-        message: comment,
+        message: comment.trim(),
       }),
     });
     if (response.status !== 200) {
+      setError("The comment wasnt added");
       return;
     }
+
+    window.location.reload();
   };
   return (
-    <div>
-      <input
-        onInput={(e) => {
-          setComment(e.currentTarget.value);
-        }}
-      />
-      <button onClick={sendComment}>Publish</button>
+    <div class="comment-writter">
+      <h5>Add a comment</h5>
+      <div>
+        <input
+          onInput={(e) => {
+            setComment(e.currentTarget.value);
+            setError("");
+          }}
+        />
+        <button onClick={sendComment}>Publish</button>
+      </div>
+      {error !== "" && <span class="error">{error}</span>}
     </div>
   );
 };
