@@ -1,6 +1,6 @@
 import { FunctionComponent } from "preact";
-import { useEffect, useState } from "preact/hooks";
-import { CloseAllPopups, CloseLogin } from "../methods/PopupInteractions.ts";
+import { useState } from "preact/hooks";
+import { CloseAllPopups } from "../methods/PopupInteractions.ts";
 import jscookie from "npm:js-cookie@3.0.5";
 import { Signal } from "@preact/signals";
 
@@ -10,13 +10,6 @@ export const LoginPopup: FunctionComponent<{ logged_in: Signal<boolean> }> = (
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
-
-  /*useEffect(() => {
-
-    Al recargar pagina: Buscar cookies de name y password,
-    si existen llamar al login del profe para ver si es correcto, en caso de serlo modificar señal logged_in
-
-  }, []);*/
 
   const login = async () => {
     if (name === "" || name.indexOf(" ") !== -1) {
@@ -43,8 +36,6 @@ export const LoginPopup: FunctionComponent<{ logged_in: Signal<boolean> }> = (
     jscookie.set("password", password, { expires: 365 });
 
     window.location.reload();
-    /*Si estamos aqui es porque no hay cookie, hashear la contraseña y crear las cookies de name y password*/
-    //CAMBIAR SEÑAL DE LOGIN A TRUE Y ACTUALIZAR LA PÁGINA
   };
   return (
     <div id="popup#login" class="popup flex flex-col">

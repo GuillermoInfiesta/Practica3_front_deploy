@@ -1,7 +1,6 @@
 import { FunctionComponent } from "preact";
 import { useState } from "preact/hooks";
-import { Signal } from "@preact/signals";
-import { Lover } from "../Types.ts";
+
 export const CommentWritter: FunctionComponent<
   { user: string; lover: string; password: string }
 > = (props) => {
@@ -39,7 +38,7 @@ export const CommentWritter: FunctionComponent<
             setError("");
           }}
         />
-        <button onClick={sendComment}>Publish</button>
+        <button class="decorated-button2" onClick={sendComment}>Publish</button>
       </div>
       {error !== "" && <span class="error">{error}</span>}
     </div>

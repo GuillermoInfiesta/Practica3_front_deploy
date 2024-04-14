@@ -9,7 +9,6 @@ import { LoverProfile } from "../components/LoverProfile.tsx";
 import { useEffect } from "preact/hooks";
 import { ActiveUserProfile } from "./ActiveUserProfile.tsx";
 import jscookie from "npm:js-cookie@3.0.5";
-import { active_user } from "../Signals.ts";
 
 type HomePageProps = {
   logged: Signal<boolean>;
@@ -37,7 +36,6 @@ export const HomePage: FunctionComponent<HomePageProps> = (props) => {
     { username: string; password: string } | undefined
   >(undefined);
   useEffect(() => {
-    //console.log(active_user.value);
     console.log("Checkeando cookies");
     const username = jscookie.get("username");
     if (username === undefined) return;
@@ -57,13 +55,12 @@ export const HomePage: FunctionComponent<HomePageProps> = (props) => {
       const res2 = await fetch(`/api/FetchUser?name=${username}`);
       const user_data = await res2.json();
       props.active_user.value = user_data;
-      console.log(props.active_user.value);
     };
 
     foo();
     props.logged.value = true;
     credentials.value = { username: username, password: pw };
-  }, []); //Solo la vez que carga (aunque de normal esto no nos daba problemas)
+  }, []);
 
   return (
     <div>

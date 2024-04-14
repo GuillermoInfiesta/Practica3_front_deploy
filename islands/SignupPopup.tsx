@@ -1,6 +1,6 @@
 import { FunctionComponent } from "preact";
 import { useState } from "preact/hooks";
-import { CloseAllPopups, CloseSignUp } from "../methods/PopupInteractions.ts";
+import { CloseAllPopups } from "../methods/PopupInteractions.ts";
 import jscookie from "npm:js-cookie@3.0.5";
 import { HobbiesBox } from "./HobbiesBox.tsx";
 
@@ -32,7 +32,6 @@ export const SignUpPopup: FunctionComponent = () => {
       scrollToEnd();
       return;
     }
-    //Meter el resto de inputs y comprobar
 
     const response_to_create = await fetch("/api/PostNewUser", {
       method: "POST",
@@ -58,10 +57,9 @@ export const SignUpPopup: FunctionComponent = () => {
       jscookie.set("password", password, { expires: 365 });
       window.location.reload();
     }
-
-    //Mostrar mensaje de error o algo
   };
 
+  //En verdad hace scroll al top, pero me da palo cambiarlo
   const scrollToEnd = () => {
     const item = document.getElementById("signup#form");
     item?.scroll({ top: 0, behavior: "smooth" });

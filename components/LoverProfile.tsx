@@ -2,7 +2,6 @@ import { FunctionComponent } from "preact";
 import { Signal } from "@preact/signals";
 import { Lover } from "../Types.ts";
 import { CloseAllPopups } from "../methods/PopupInteractions.ts";
-import { Comment } from "./Comment.tsx";
 import { CommentsBox } from "./CommentsBox.tsx";
 import { HobbiesBox } from "../islands/HobbiesBox.tsx";
 import { CommentWritter } from "../islands/CommentWritter.tsx";
@@ -15,8 +14,6 @@ export const LoverProfile: FunctionComponent<
 > = (
   props,
 ) => {
-  //Abajo una isla para poder añadir comments
-  //Props tambien deberia tener el logged_in y el nombre para los comments
   return (
     <div id="popup#lover" class="popup popup-lover">
       <div class="lover-data">

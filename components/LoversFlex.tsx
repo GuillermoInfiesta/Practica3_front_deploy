@@ -2,7 +2,6 @@ import { LoverCard } from "../islands/LoverCard.tsx";
 import { FunctionComponent } from "preact";
 import { SearchFiltersProps } from "../Types.ts";
 import { Lover } from "../Types.ts";
-import { useState } from "preact/hooks";
 import { Signal } from "@preact/signals";
 
 type LoversDisplayProps = {
@@ -14,7 +13,8 @@ export const LoversFlex: FunctionComponent<LoversDisplayProps> = (props) => {
   const filteredLovers = props.lovers.filter((lov) => {
     if (
       props.filters.name.value !== "" &&
-      lov.name.indexOf(props.filters.name.value) === -1
+      lov.name.toLowerCase().indexOf(props.filters.name.value.toLowerCase()) ===
+        -1
     ) return false;
 
     if (

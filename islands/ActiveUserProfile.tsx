@@ -56,7 +56,6 @@ export const ActiveUserProfile: FunctionComponent<
     window.location.reload();
   };
 
-  //Funciona juraria
   const deleteUser = async () => {
     if (password === "" || password.indexOf(" ") === 0) {
       return;
@@ -169,7 +168,7 @@ export const ActiveUserProfile: FunctionComponent<
                 auxhobbie.length === 0 || auxhobbie.indexOf(" ") === 0
               ) return;
               if (hobbies.indexOf(auxhobbie) !== -1) return;
-              //Añadir a una señal de un array -> a=[1,2] para añadir un 3, a = [...a, 3], de esta forma el value cambia su referencia y se repinta
+
               hobbies.push(auxhobbie.toLowerCase());
               setAuxhobbie("");
               console.log("añadido");
@@ -212,6 +211,7 @@ export const ActiveUserProfile: FunctionComponent<
         <div>
           <h5>Log out</h5>
           <button
+            class="decorated-button2"
             onClick={() => {
               logOut();
             }}

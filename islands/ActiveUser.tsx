@@ -3,7 +3,6 @@ import { OpenPopup } from "../methods/PopupInteractions.ts";
 export const ActiveUser: FunctionComponent<{ name: string; img: string }> = (
   props,
 ) => {
-  //<i class="user-icon"></i>
   return (
     <button
       class="active-user"

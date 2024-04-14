@@ -13,7 +13,6 @@ import * as $api_ValidateLogin from "./routes/api/ValidateLogin.ts";
 import * as $index from "./routes/index.tsx";
 import * as $ActiveUser from "./islands/ActiveUser.tsx";
 import * as $ActiveUserProfile from "./islands/ActiveUserProfile.tsx";
-import * as $AddCookie from "./islands/AddCookie.tsx";
 import * as $CommentWritter from "./islands/CommentWritter.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import * as $Header from "./islands/Header.tsx";
@@ -22,7 +21,6 @@ import * as $HomePage from "./islands/HomePage.tsx";
 import * as $LogOptions from "./islands/LogOptions.tsx";
 import * as $LoginPopup from "./islands/LoginPopup.tsx";
 import * as $LoverCard from "./islands/LoverCard.tsx";
-import * as $ProfileComment from "./islands/ProfileComment.tsx";
 import * as $SearchFilters from "./islands/SearchFilters.tsx";
 import * as $SignupPopup from "./islands/SignupPopup.tsx";
 import { type Manifest } from "$fresh/server.ts";
@@ -42,7 +40,6 @@ const manifest = {
   islands: {
     "./islands/ActiveUser.tsx": $ActiveUser,
     "./islands/ActiveUserProfile.tsx": $ActiveUserProfile,
-    "./islands/AddCookie.tsx": $AddCookie,
     "./islands/CommentWritter.tsx": $CommentWritter,
     "./islands/Counter.tsx": $Counter,
     "./islands/Header.tsx": $Header,
@@ -51,7 +48,6 @@ const manifest = {
     "./islands/LogOptions.tsx": $LogOptions,
     "./islands/LoginPopup.tsx": $LoginPopup,
     "./islands/LoverCard.tsx": $LoverCard,
-    "./islands/ProfileComment.tsx": $ProfileComment,
     "./islands/SearchFilters.tsx": $SearchFilters,
     "./islands/SignupPopup.tsx": $SignupPopup,
   },

@@ -452,6 +452,15 @@ html {
   background: linear-gradient(to right, rgb(230, 30, 93) 0%, rgb(225, 28, 61) 50%, rgb(215, 4, 22) 100%);
   color: #fff;
 }
+.decorated-button2{
+  display: inline-block;
+  outline: none;
+  border: 1px solid rgb(215, 4, 22);
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background-color: #fff;
+  color: rgb(225, 28, 61);
+}
 
 .popup-user-profile{
   padding: 1rem;
@@ -663,6 +672,7 @@ html {
   min-height: 3rem;
   display: flex;
   flex-wrap: wrap;
+  max-height: 90%;
   gap: 1rem;
   overflow-y: scroll;
   p{
@@ -692,6 +702,14 @@ html {
   
   display: flex;
   flex-direction: column;
+  input{
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid rgba(128, 128, 128, 0.784);
+  }
+  input:focus{
+    outline: none;
+  }
   .error{
     margin-top: 8px;
     padding: 0.5rem;
