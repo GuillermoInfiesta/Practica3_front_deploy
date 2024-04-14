@@ -7,11 +7,22 @@
 * {
   margin: 0;
 }
-/*
+
 *::-webkit-scrollbar{
-  width: 0px;
+  width: 8px;
+  
 }
-*/
+*::-webkit-scrollbar-thumb{
+  border-radius: 8px;
+  background-color: #EF4765;
+}
+
+*::-webkit-scrollbar-track{
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
 button {
   color: inherit;
 }
@@ -249,9 +260,36 @@ html {
   inset: 0rem;
   align-items: center;
   position: sticky;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   border-radius: 50px;
   border: 1px solid black;
+
+  label{    
+    font-size: small;
+    color: gray;
+  }
+  input, select{
+    border-radius: 8px;  
+  }
+  input:focus, select:focus{
+    outline: none;
+  }
+  button{
+    border: none;
+    color: white;
+    background-color: #EF4765;
+    border-radius: 10px;
+    padding: .5rem;
+    transition: all .2s;
+  }
+  button:hover{
+    background-color: #ee2449;
+  }
+
+  span{
+    font-size: smaller;
+    font-weight: 310;
+  }
 }
 
 .lovers-flex{
@@ -392,18 +430,29 @@ html {
   overflow-y: scroll;
 }
 
+.decorated-button{
+  display: inline-block;
+  height: 2rem;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+  background: linear-gradient(to right, rgb(230, 30, 93) 0%, rgb(225, 28, 61) 50%, rgb(215, 4, 22) 100%);
+  color: #fff;
+}
+
 .popup-user-profile{
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  overflow-y: scroll;
   left: 25%;
   width: 50%; 
   h5{
+    margin-top: 0.5rem;
     font-weight: lighter;
     border-bottom: 1px solid rgba(128, 128, 128, 0.432);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
   input, select { 
     margin-bottom: 0.5rem;
@@ -415,14 +464,6 @@ html {
 
   .decorated-button{
     margin-left: 1rem;
-    display: inline-block;
-    height: 2rem;
-    outline: none;
-    border: none;
-    border-radius: 8px;
-    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
-    background: linear-gradient(to right, rgb(230, 30, 93) 0%, rgb(225, 28, 61) 50%, rgb(215, 4, 22) 100%);
-    color: #fff;
   }
 
   .image-input{
@@ -447,6 +488,16 @@ html {
     }
     p{font-size: xx-small;}
 
+  }
+  .profile-comments{
+    .comments{
+      font-weight: lighter;
+      font-size: small;
+      margin-bottom: 0.5rem;
+    }
+    span{
+      margin-right: 0.5rem;
+    }
   }
 
   .profile-delete{
@@ -521,12 +572,12 @@ html {
     font-size: x-small;
     color: gray;
   }
-  input{
+  input,select{
     height: 1.2rem;
     border: none; 
     font-size:medium;
   }
-  input:focus{
+  input:focus,select:focus{
     outline: none;
   }
   textarea{

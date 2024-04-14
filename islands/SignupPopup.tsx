@@ -19,14 +19,17 @@ export const SignUpPopup: FunctionComponent = () => {
   const signup = async () => {
     if (name === "" || name.indexOf(" ") !== -1) {
       setError("Non valid name");
+      scrollToEnd();
       return;
     }
     if (password === "" || password.indexOf(" ") !== -1) {
       setError("Non valid password");
+      scrollToEnd();
       return;
     }
     if (password !== password2) {
       setError("Passwords dont match");
+      scrollToEnd();
       return;
     }
     //Meter el resto de inputs y comprobar
@@ -45,7 +48,11 @@ export const SignUpPopup: FunctionComponent = () => {
         comments: [],
       }),
     });
-
+    if (response_to_create.status === 400) {
+      const content = await response_to_create.json();
+      setError(content.error);
+      return;
+    }
     if (response_to_create.status === 200) {
       jscookie.set("username", name, { expires: 365 });
       jscookie.set("password", password, { expires: 365 });
@@ -54,13 +61,19 @@ export const SignUpPopup: FunctionComponent = () => {
 
     //Mostrar mensaje de error o algo
   };
+
+  const scrollToEnd = () => {
+    const item = document.getElementById("signup#form");
+    console.log(item?.scrollHeight);
+    item?.scroll({ top: item.scrollHeight, behavior: "smooth" });
+  };
   return (
     <div id="popup#signup" class="popup flex flex-col">
       <div class="login-header">
         <button type="exit" onClick={() => CloseAllPopups()}>x</button>
         <h3>Sign Up</h3>
       </div>
-      <div class="login-form overflow">
+      <div id="signup#form" class="login-form overflow">
         <label class="login-form-label">
           <span>Name</span>
           <input
@@ -122,7 +135,7 @@ export const SignUpPopup: FunctionComponent = () => {
         <label class="login-form-label">
           <span>Age</span>
           <input
-            type="text"
+            type="number"
             onInput={(e) => {
               setAge(e.currentTarget.value);
               setError("");
@@ -132,14 +145,17 @@ export const SignUpPopup: FunctionComponent = () => {
         </label>
         <label class="login-form-label">
           <span>Sex</span>
-          <input
+          <select
+            value={"male"}
             type="text"
-            onInput={(e) => {
+            onChange={(e) => {
               setSex(e.currentTarget.value);
               setError("");
             }}
           >
-          </input>
+            <option>male</option>
+            <option>female</option>
+          </select>
         </label>
         <label class="login-form-label">
           <span>Hobbie</span>
@@ -169,9 +185,17 @@ export const SignUpPopup: FunctionComponent = () => {
           Add hobbie
         </button>
         <HobbiesBox hobbies={hobbies} dynamic={true} />
-        <button onClick={signup}>Continue</button>
         {error !== "" && <span class="error">{error}</span>}
       </div>
+      <button
+        class="decorated-button"
+        onClick={() => {
+          signup();
+          scrollToEnd;
+        }}
+      >
+        Continue
+      </button>
     </div>
   );
 };

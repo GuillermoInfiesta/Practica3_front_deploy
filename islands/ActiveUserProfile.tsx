@@ -100,141 +100,145 @@ export const ActiveUserProfile: FunctionComponent<
         </button>
         <h3>Edit Your Profile</h3>
       </div>
-      <div id="profile#name">
-        <h5>Name</h5>
-        <input
-          value={name}
-          placeholder={"Current name: " + props.user_data.value?.name}
-          onInput={(e) => {
-            setName(e.currentTarget.value);
-          }}
-        />
-      </div>
-      <div id="profile#image">
-        <h5>Image</h5>
-        <div class="image-input">
+      <div class="overflow">
+        <div id="profile#name">
+          <h5>Name</h5>
           <input
-            value={photo}
-            placeholder="URL"
-            onInput={(e) => setPhoto(e.currentTarget.value)}
-          />
-          <span>Preview</span>
-          <img src={photo} />
-        </div>
-      </div>
-      <div id="profile#sex&name" class="flex gap-8 width-max">
-        <div class="width-30">
-          <h5>Sex</h5>
-          <select value={sex} onChange={(e) => setSex(e.currentTarget.value)}>
-            <option>female</option>
-            <option>male</option>
-          </select>
-        </div>
-        <div class="width-30">
-          <h5>Age</h5>
-          <input
-            value={age}
-            type="number"
-            min={16}
-            max={100}
-            onInput={(e) => setAge(parseInt(e.currentTarget.value))}
+            value={name}
+            placeholder={"Current name: " + props.user_data.value?.name}
+            onInput={(e) => {
+              setName(e.currentTarget.value);
+            }}
           />
         </div>
-      </div>
-      <div id="profile#description" class="profile-description">
-        <h5>Description</h5>
-        <textarea
-          value={description}
-          maxLength={400}
-          placeholder={"Current description: " +
-            props.user_data.value?.description}
-          onInput={(e) => setDescription(e.currentTarget.value)}
-        />
-        <p>Maximum description length is 400 characters</p>
-      </div>
-      <div id="profile#hobbies">
-        <h5>Hobbies</h5>
-        <input
-          value={auxhobbie}
-          onInput={(e) => {
-            setAuxhobbie(e.currentTarget.value);
-          }}
-        />
-        <button
-          class="decorated-button"
-          onClick={() => {
-            console.log(`hobbie: ${auxhobbie}`);
-            if (
-              auxhobbie.length === 0 || auxhobbie.indexOf(" ") === 0
-            ) return;
-            if (hobbies.indexOf(auxhobbie) !== -1) return;
-            //Añadir a una señal de un array -> a=[1,2] para añadir un 3, a = [...a, 3], de esta forma el value cambia su referencia y se repinta
-            hobbies.push(auxhobbie.toLowerCase());
-            setAuxhobbie("");
-            console.log("añadido");
-          }}
-        >
-          Add hobbie
-        </button>
-        <button
-          class="decorated-button"
-          onClick={() => {
-            const i = hobbies.indexOf(auxhobbie);
-            if (i === -1) return;
-            hobbies.splice(i, 1);
-            setAuxhobbie("");
-          }}
-        >
-          Delete hobbie
-        </button>
-        <HobbiesBox hobbies={hobbies} dynamic={true} />
-      </div>
-      <div id="profile#comments">
-        <h5>Comments</h5>
-        <CommentsBox comments={comments} />
-        <span>Delete comments from user:</span>
-        <input onInput={(e) => setComementsUserDelete(e.currentTarget.value)} />
-        <button
-          class="decorated-button"
-          onClick={() => {
-            const filteredComments = comments.filter((cm) =>
-              cm.user !== commentsUserDelete
-            );
-            setComments(filteredComments);
-          }}
-        >
-          Delete comments
-        </button>
+        <div id="profile#image">
+          <h5>Image</h5>
+          <div class="image-input">
+            <input
+              value={photo}
+              placeholder="URL"
+              onInput={(e) => setPhoto(e.currentTarget.value)}
+            />
+            <span>Preview</span>
+            <img src={photo} />
+          </div>
+        </div>
+        <div id="profile#sex&name" class="flex gap-8 width-max">
+          <div class="width-30">
+            <h5>Sex</h5>
+            <select value={sex} onChange={(e) => setSex(e.currentTarget.value)}>
+              <option>female</option>
+              <option>male</option>
+            </select>
+          </div>
+          <div class="width-30">
+            <h5>Age</h5>
+            <input
+              value={age}
+              type="number"
+              min={16}
+              max={100}
+              onInput={(e) => setAge(parseInt(e.currentTarget.value))}
+            />
+          </div>
+        </div>
+        <div id="profile#description" class="profile-description">
+          <h5>Description</h5>
+          <textarea
+            value={description}
+            maxLength={400}
+            placeholder={"Current description: " +
+              props.user_data.value?.description}
+            onInput={(e) => setDescription(e.currentTarget.value)}
+          />
+          <p>Maximum description length is 400 characters</p>
+        </div>
+        <div id="profile#hobbies">
+          <h5>Hobbies</h5>
+          <input
+            value={auxhobbie}
+            onInput={(e) => {
+              setAuxhobbie(e.currentTarget.value);
+            }}
+          />
+          <button
+            class="decorated-button"
+            onClick={() => {
+              console.log(`hobbie: ${auxhobbie}`);
+              if (
+                auxhobbie.length === 0 || auxhobbie.indexOf(" ") === 0
+              ) return;
+              if (hobbies.indexOf(auxhobbie) !== -1) return;
+              //Añadir a una señal de un array -> a=[1,2] para añadir un 3, a = [...a, 3], de esta forma el value cambia su referencia y se repinta
+              hobbies.push(auxhobbie.toLowerCase());
+              setAuxhobbie("");
+              console.log("añadido");
+            }}
+          >
+            Add hobbie
+          </button>
+          <button
+            class="decorated-button"
+            onClick={() => {
+              const i = hobbies.indexOf(auxhobbie);
+              if (i === -1) return;
+              hobbies.splice(i, 1);
+              setAuxhobbie("");
+            }}
+          >
+            Delete hobbie
+          </button>
+          <HobbiesBox hobbies={hobbies} dynamic={true} />
+        </div>
+        <div id="profile#comments" class="profile-comments">
+          <h5>Comments</h5>
+          <CommentsBox comments={comments} />
+          <span>Delete comments from user:</span>
+          <input
+            onInput={(e) => setComementsUserDelete(e.currentTarget.value)}
+          />
+          <button
+            class="decorated-button"
+            onClick={() => {
+              const filteredComments = comments.filter((cm) =>
+                cm.user !== commentsUserDelete
+              );
+              setComments(filteredComments);
+            }}
+          >
+            Delete comments
+          </button>
+        </div>
+        <div>
+          <h5>Log out</h5>
+          <button
+            onClick={() => {
+              logOut();
+            }}
+          >
+            Log out
+          </button>
+        </div>
+        <div id="profile#delete" class="profile-delete">
+          <h5>Delete profile</h5>
+          <p>
+            Warning, this action can not be reverted. If you choose to delete
+            the profile it will be errased from out database, with no option of
+            recovering it.
+          </p>
+          <input
+            type="password"
+            placeholder="Enter password"
+            onInput={(e) => setPassword(e.currentTarget.value)}
+          />
+          <button class="decorated-button" onClick={deleteUser}>
+            DELETE PROFILE
+          </button>
+        </div>
       </div>
       <button class="decorated-button" onClick={updateData}>
         Apply Changes
       </button>
-      <div>
-        <h5>Log out</h5>
-        <button
-          onClick={() => {
-            logOut();
-          }}
-        >
-          Log out
-        </button>
-      </div>
-      <div id="profile#delete" class="profile-delete">
-        <h5>Delete profile</h5>
-        <p>
-          Warning, this action can not be reverted. If you choose to delete the
-          profile it will be errased from out database, with no option of
-          recovering it.
-        </p>
-        <input
-          type="password"
-          placeholder="Enter password"
-          onInput={(e) => setPassword(e.currentTarget.value)}
-        />
-        <button class="decorated-button" onClick={deleteUser}>
-          DELETE PROFILE
-        </button>
-      </div>
     </div>
   );
 };

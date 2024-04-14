@@ -4,13 +4,6 @@ import { SearchFiltersProps } from "../Types.ts";
 export const SearchFilters: FunctionComponent<
   SearchFiltersProps & { all_hobbies: string[] }
 > = (props) => {
-  /*<input
-    type="number"
-    min={18}
-    onInput={(e) => props.age.value = e.currentTarget.value}
-  >
-    Age
-  </input>*/
   return (
     <div class="search-filters">
       <div class="flex flex-col">
@@ -37,36 +30,36 @@ export const SearchFilters: FunctionComponent<
       <div class="flex flex-col">
         <label>Age</label>
         <div>
-          <span>Min</span>
           <input
             value={props.age.value[0]}
-            type="number"
+            type="range"
             onInput={(e) =>
               props.age.value = [
                 parseInt(e.currentTarget.value),
                 props.age.value[1],
               ]}
-            min={16}
-            max={props.age.value[1]}
+            min={0}
+            max={100}
           />
+          <span>Min: {props.age.value[0]}</span>
         </div>
         <div>
-          <span>Max</span>
           <input
             value={props.age.value[1]}
-            type="number"
+            type="range"
             onInput={(e) =>
               props.age.value = [
                 props.age.value[0],
                 parseInt(e.currentTarget.value),
               ]}
-            min={props.age.value[0]}
+            min={0}
             max={100}
           />
+          <span>Max: {props.age.value[1]}</span>
         </div>
       </div>
-      <div>
-        <legend>Hobbies</legend>
+      <div class="flex flex-col">
+        <label>Hobbies</label>
         <select
           value="any"
           onChange={(e) => props.hobbies.value = [e.currentTarget.value]}
