@@ -8,7 +8,7 @@ export const SignUpPopup: FunctionComponent = () => {
   const [name, setName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [password2, setPassword2] = useState<string>("");
-  const [sex, setSex] = useState<string>("");
+  const [sex, setSex] = useState<string>("male");
   const [age, setAge] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [hobbies, setHobbies] = useState<string[]>([]);
@@ -64,8 +64,7 @@ export const SignUpPopup: FunctionComponent = () => {
 
   const scrollToEnd = () => {
     const item = document.getElementById("signup#form");
-    console.log(item?.scrollHeight);
-    item?.scroll({ top: item.scrollHeight, behavior: "smooth" });
+    item?.scroll({ top: 0, behavior: "smooth" });
   };
   return (
     <div id="popup#signup" class="popup flex flex-col">
@@ -74,6 +73,7 @@ export const SignUpPopup: FunctionComponent = () => {
         <h3>Sign Up</h3>
       </div>
       <div id="signup#form" class="login-form overflow">
+        {error !== "" && <span class="error">{error}</span>}
         <label class="login-form-label">
           <span>Name</span>
           <input
@@ -146,7 +146,7 @@ export const SignUpPopup: FunctionComponent = () => {
         <label class="login-form-label">
           <span>Sex</span>
           <select
-            value={"male"}
+            value={sex}
             type="text"
             onChange={(e) => {
               setSex(e.currentTarget.value);
@@ -185,7 +185,6 @@ export const SignUpPopup: FunctionComponent = () => {
           Add hobbie
         </button>
         <HobbiesBox hobbies={hobbies} dynamic={true} />
-        {error !== "" && <span class="error">{error}</span>}
       </div>
       <button
         class="decorated-button"

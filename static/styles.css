@@ -161,10 +161,19 @@ html {
 }
 
 .logo{
+  align-self: center;
   width: 44px;
   height: 44px;
 }
 
+.page-logo{
+  padding-left: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  h2{
+    align-self: center;
+  }
+}
 .session-login{
   display: flex;
   gap: 1rem;
@@ -263,6 +272,7 @@ html {
   background-color: rgb(255, 255, 255);
   border-radius: 50px;
   border: 1px solid black;
+  z-index: 5;
 
   label{    
     font-size: small;
@@ -270,6 +280,9 @@ html {
   }
   input, select{
     border-radius: 8px;  
+  }
+  input[type="range"]{
+    opacity: 1;
   }
   input:focus, select:focus{
     outline: none;
@@ -468,7 +481,8 @@ html {
 
   .image-input{
     display: flex;
-    gap: 4rem;
+    flex-direction: column;
+    gap: 0rem;
     align-content: center;
     span{
       font-size: x-small;
@@ -477,6 +491,7 @@ html {
     img{
       height: 100px;
       width: 100px;
+      border-radius: 6px;
     }
   }
   .profile-description{
@@ -636,7 +651,7 @@ html {
   min-height: 2rem;
   padding: 0.5rem;
   border-radius: 10px;
-  border: 2px solid rgba(1, 255, 1, 0.695);
+  border: 2px solid rgba(1, 255, 1, 0.441);
   background-color: rgba(0, 255, 0, 0.174);
   font-size: small;
 }
@@ -645,4 +660,98 @@ html {
 .hobbies-mins{
   border-radius: 10px;
   border: 1px solid rgba(128, 128, 128, 0.442);
+}
+
+@media (max-width: 600px) {
+  *::-webkit-scrollbar{
+    width: 0px;
+  }
+
+  .page-logo{
+    gap: 4px;
+    h2{
+      font-size:large;
+    }
+  }
+
+  .session-login{
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    button{
+      width: 4rem;
+      font-size: medium;
+      border-radius: 10px;
+    }
+  }  
+
+  .search-filters{
+    width: 95%;
+    border-radius: 30px;
+  }
+  .lover-card{
+    width: 130px;
+    height: 175px;
+    .details{
+      padding-left: 6px;
+      position: absolute;
+      font-weight: lighter;
+      font-size: small;
+      color: white;
+      .age{
+        font-size: 0.5rem;
+        color: rgba(255, 255, 255, 0.565);
+      }
+    }
+  }
+  .popup{
+    width: 80%; 
+    left: 10%;
+    input, select{
+      width: 100%;
+    }
+  }
+  .popup-lover{
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 600px;
+    .lover-data{
+      width: 100%;
+    }
+    .lover-details{
+      width: 100%;
+      justify-content:start;
+      .about-lover{
+        height: auto;
+      }
+    }
+  }
+  .user-comment{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.285);
+    border-radius: 10px;
+    padding: 0.5rem;
+    height: auto;
+    h4{
+      font-size: medium;
+    }
+  }
+  .hobbies-box{
+    gap: 0.5rem;
+    max-height: 200px;
+    .hobbie{
+      padding: 4px;
+    }
+  } 
+  .popup-user-profile{
+    .decorated-button{
+      margin-left: 0px;
+    }
+    .hobbies-box{
+      margin-top: 0.5rem;
+    }
+  } 
 }

@@ -56,17 +56,13 @@ export const HomePage: FunctionComponent<HomePageProps> = (props) => {
       }
       const res2 = await fetch(`/api/FetchUser?name=${username}`);
       const user_data = await res2.json();
-      //console.log(user_data);
       props.active_user.value = user_data;
       console.log(props.active_user.value);
-      //console.log("user update");
     };
 
     foo();
-    //Checkear el login
     props.logged.value = true;
     credentials.value = { username: username, password: pw };
-    //console.log(jscookie.get());
   }, []); //Solo la vez que carga (aunque de normal esto no nos daba problemas)
 
   return (

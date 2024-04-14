@@ -13,7 +13,7 @@ export const Header: FunctionComponent<
 ) => {
   return (
     <div class="header">
-      <div class="flex">
+      <div class="page-logo">
         <img
           class="logo"
           src="https://static.vecteezy.com/system/resources/previews/018/910/833/original/tinder-app-logo-tinder-app-icon-free-free-vector.jpg"
