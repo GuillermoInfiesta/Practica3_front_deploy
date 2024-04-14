@@ -29,6 +29,6 @@ jobs:
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
-          project: "guillermoin-practica3-f-16"
+          project: "practica-3-frontend"
           entrypoint: "main.ts"
           root: "."
